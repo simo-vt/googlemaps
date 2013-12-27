@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)http://localhost:81/pkg/net/googlemaps/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+  <title>googlemaps - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="./Documentation_files/style.css">
+<script src="./Documentation_files/cb=gapi.loaded_1" async=""></script><script src="./Documentation_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./Documentation_files/plusone.js" gapi_processed="true"></script><script type="text/javascript" src="./Documentation_files/jquery.min.js"></script>
+<script type="text/javascript">window.jQuery || document.write(unescape("%3Cscript src='/doc/jquery.js' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<script type="text/javascript" src="./Documentation_files/godocs.js"></script>
+
+<style type="text/css"></style></head>
+<body>
+
+<div id="topbar" class="wide"><div class="container">
+
+<form method="GET" action="http://localhost:81/search">
+<div id="menu" style="min-width: 650px;">
+<a href="http://localhost:81/doc/">Documents</a>
+<a href="http://localhost:81/ref/">References</a>
+<a href="http://localhost:81/pkg/">Packages</a>
+<a href="http://localhost:81/project/">The Project</a>
+<a href="http://localhost:81/help/">Help</a>
+
+<input type="text" id="search" name="q" class="inactive" value="Search" placeholder="Search">
+</div>
+<div id="heading"><a href="http://localhost:81/">The Go Programming Language</a></div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide" tabindex="-1" style="outline: 0px;">
+<div class="container">
+
+
+  <div id="plusone"><div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 24px; height: 15px; background-position: initial initial; background-repeat: initial initial;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 24px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 15px;" tabindex="0" vspace="0" width="100%" id="I0_1388119236643" name="I0_1388119236643" src="./Documentation_files/fastbutton.htm" data-gapiattached="true" title="+1"></iframe></div></div>
+  <h1>Package googlemaps</h1>
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "net/googlemaps"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="http://localhost:81/pkg/net/googlemaps/#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="http://localhost:81/pkg/net/googlemaps/#pkg-index" class="indexLink">Index</a></dd>
+			
+				<dd><a href="http://localhost:81/pkg/net/googlemaps/#pkg-examples" class="examplesLink">Examples</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Google Maps WebServices HTTP Client API.
+</p>
+<p>
+The idea is simple. You create a service, you assign parameters to it and you execute it with the Execute function. More details in the Examples section.
+</p>
+<p>
+This client API supports the two types of business authentication, described here - <a href="https://developers.google.com/maps/documentation/business/webservices/auth">https://developers.google.com/maps/documentation/business/webservices/auth</a>
+</p>
+<pre>// For "key" authentication you must set the API Key for the service with the function
+func (s *Service) SetApiKey(aKey string)
+// For "client" authentication you must set a Client ID and Client Secret with the functions
+func (s *Service) SetClientId(cId string)
+func (s *Service) SetClientSecret(cSecret string)
+</pre>
+<p>
+Official API documentation - <a href="https://developers.google.com/maps/documentation/webservices/">https://developers.google.com/maps/documentation/webservices/</a>. Please note that you should familiarize yourself with the terms of Google Maps API before using it.
+</p>
+
+			</div>
+		</div>
+		
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="http://localhost:81/pkg/net/googlemaps/#pkg-constants">Constants</a></dd>
+			
+			
+			
+			
+				
+				<dd><a href="http://localhost:81/pkg/net/googlemaps/#Service">type Service</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="http://localhost:81/pkg/net/googlemaps/#NewService">func NewService(sPath string, rMethod string, aType string) (*Service, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="http://localhost:81/pkg/net/googlemaps/#Service.AddParam">func (s *Service) AddParam(key, value string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="http://localhost:81/pkg/net/googlemaps/#Service.Execute">func (s *Service) Execute(requestBody string) (map[string]interface{}, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="http://localhost:81/pkg/net/googlemaps/#Service.RemoveParam">func (s *Service) RemoveParam(key string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="http://localhost:81/pkg/net/googlemaps/#Service.SetApiKey">func (s *Service) SetApiKey(aKey string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="http://localhost:81/pkg/net/googlemaps/#Service.SetAuthType">func (s *Service) SetAuthType(aType string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="http://localhost:81/pkg/net/googlemaps/#Service.SetClientId">func (s *Service) SetClientId(cId string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="http://localhost:81/pkg/net/googlemaps/#Service.SetClientSecret">func (s *Service) SetClientSecret(cSecret string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="http://localhost:81/pkg/net/googlemaps/#Service.SetRequestMethod">func (s *Service) SetRequestMethod(rMethod string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="http://localhost:81/pkg/net/googlemaps/#Service.SetServicePath">func (s *Service) SetServicePath(sPath string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="http://localhost:81/pkg/net/googlemaps/#Service.String">func (s *Service) String() string</a></dd>
+				
+			
+				
+				<dd><a href="http://localhost:81/pkg/net/googlemaps/#Stringer">type Stringer</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+		<div id="pkg-examples">
+			<h4>Examples</h4>
+			<dl>
+			
+			<dd><a class="exampleLink" href="http://localhost:81/pkg/net/googlemaps/#example_Service_Execute_forGET">Service.Execute (ForGET)</a></dd>
+			
+			<dd><a class="exampleLink" href="http://localhost:81/pkg/net/googlemaps/#example_Service_Execute_forPOST">Service.Execute (ForPOST)</a></dd>
+			
+			</dl>
+		</div>
+		
+
+		
+			<h4>Package files</h4>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="http://localhost:81/src/pkg/net/googlemaps/googlemaps.go">googlemaps.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<pre>const (
+    <span id="GOOGLEMAPS_AUTH_CLIENT">GOOGLEMAPS_AUTH_CLIENT</span>   <a href="http://localhost:81/pkg/builtin/#string">string</a> = "client"
+    <span id="GOOGLEMAPS_AUTH_KEY">GOOGLEMAPS_AUTH_KEY</span>      <a href="http://localhost:81/pkg/builtin/#string">string</a> = "key"
+    <span id="GOOGLEMAPS_AUTH_EMPTY">GOOGLEMAPS_AUTH_EMPTY</span>    <a href="http://localhost:81/pkg/builtin/#string">string</a> = ""
+    <span id="GOOGLEMAPS_URL">GOOGLEMAPS_URL</span>           <a href="http://localhost:81/pkg/builtin/#string">string</a> = "https://maps.googleapis.com/maps/api/"
+    <span id="GOOGLEMAPS_RESPONSE_JSON">GOOGLEMAPS_RESPONSE_JSON</span> <a href="http://localhost:81/pkg/builtin/#string">string</a> = "json"
+    <span id="GOOGLEMAPS_RESPONSE_XML">GOOGLEMAPS_RESPONSE_XML</span>  <a href="http://localhost:81/pkg/builtin/#string">string</a> = "xml"
+)</pre>
+				<p>
+The constants you will be using are:
+</p>
+<pre>googlemaps.GOOGLEMAPS_AUTH_CLIENT - used if we want to use "client" type of authentication. For business users. Note the limits explained in the Google Maps API.
+googlemaps.GOOGLEMAPS_AUTH_KEY - used if we want to use "key" type of authentication. For business users. Note the limits explained in the Google Maps API.
+googlemaps.GOOGLEMAPS_AUTH_EMPTY - used if we do not want to authenticate. Note the limits explained in the Google Maps API.
+</pre>
+
+			
+		
+		
+		
+		
+			
+			
+			<h2 id="Service">type <a href="http://localhost:81/src/pkg/net/googlemaps/googlemaps.go?s=1974:2269#L39">Service</a></h2>
+			<pre>type Service struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+			
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="NewService">func <a href="http://localhost:81/src/pkg/net/googlemaps/googlemaps.go?s=2848:2925#L63">NewService</a></h3>
+				<pre>func NewService(sPath <a href="http://localhost:81/pkg/builtin/#string">string</a>, rMethod <a href="http://localhost:81/pkg/builtin/#string">string</a>, aType <a href="http://localhost:81/pkg/builtin/#string">string</a>) (*<a href="http://localhost:81/pkg/net/googlemaps/#Service">Service</a>, <a href="http://localhost:81/pkg/builtin/#error">error</a>)</pre>
+				<p>
+NewService creates a new Google Maps API service. The passed parameters are:
+</p>
+<p>
+sPath string - this is the name of the service you wish to call. For example: "place/event/add" or "directions".
+</p>
+<p>
+rMethod string - this is the request method. You will most often use GET, but with the case of the Places API you may need to use POST.
+</p>
+<p>
+aType string - can be one of the following:
+</p>
+<pre>googlemaps.GOOGLEMAPS_AUTH_KEY
+googlemaps.GOOGLEMAPS_AUTH_CLIENT
+googlemaps.GOOGLEMAPS_AUTH_EMPTY
+</pre>
+<p>
+All three are explained in the constants section.
+</p>
+
+				
+			
+
+			
+				
+				<h3 id="Service.AddParam">func (*Service) <a href="http://localhost:81/src/pkg/net/googlemaps/googlemaps.go?s=5804:5849#L169">AddParam</a></h3>
+				<pre>func (s *<a href="http://localhost:81/pkg/net/googlemaps/#Service">Service</a>) AddParam(key, value <a href="http://localhost:81/pkg/builtin/#string">string</a>)</pre>
+				<p>
+AddParam adds a request parameter to the service request. Note that you should always use this function to set the "sensor" parameter to either "true" or "false"
+</p>
+
+				
+				
+			
+				
+				<h3 id="Service.Execute">func (*Service) <a href="http://localhost:81/src/pkg/net/googlemaps/googlemaps.go?s=6358:6435#L184">Execute</a></h3>
+				<pre>func (s *<a href="http://localhost:81/pkg/net/googlemaps/#Service">Service</a>) Execute(requestBody <a href="http://localhost:81/pkg/builtin/#string">string</a>) (map[<a href="http://localhost:81/pkg/builtin/#string">string</a>]interface{}, <a href="http://localhost:81/pkg/builtin/#error">error</a>)</pre>
+				<p>
+Execute is the main function of this client API. You should pass the request body as a string.
+In most cases, this should be an empty string, since the requests to the API are mostly GET. In the case of the Places API the requestBody string should contain a JSON object with the parameters, like in this link: <a href="https://developers.google.com/places/documentation/actions#event_add">https://developers.google.com/places/documentation/actions#event_add</a>
+</p>
+
+				
+				<div id="example_Service_Execute_forGET" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (ForGET)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (ForGET)</span></p>
+		
+		
+		
+			<p>Code:</p>
+			<pre class="code">s, err := NewService("elevation", "GET", GOOGLEMAPS_AUTH_EMPTY)
+if err != nil {
+    fmt.Println(err.Error())
+    return
+}
+
+s.AddParam("sensor", "false")
+s.AddParam("locations", "40.714728,-73.998672")
+
+resp, err := s.Execute("")
+
+if err != nil {
+    fmt.Println(err.Error())
+    return
+}
+
+fmt.Println(resp["status"])
+<span class="comment"></span></pre>
+			
+			<p>Output:</p>
+			<pre class="output">OK
+</pre>
+			
+		
+	</div>
+</div>
+<div id="example_Service_Execute_forPOST" class="toggle">
+	<div class="collapsed">
+		<p class="exampleHeading toggleButton">▹ <span class="text">Example (ForPOST)</span></p>
+	</div>
+	<div class="expanded">
+		<p class="exampleHeading toggleButton">▾ <span class="text">Example (ForPOST)</span></p>
+		<p>As in the example in https://developers.google.com/places/documentation/actions#PlaceReports
+</p>
+		
+		
+			<p>Code:</p>
+			<pre class="code">s, err := googlemaps.NewService("place/add", "POST", googlemaps.GOOGLEMAPS_AUTH_KEY)
+if err != nil {
+    fmt.Println(err.Error())
+    return
+}
+
+s.AddParam("sensor", "false")
+s.SetApiKey("TEST_API_KEY")
+
+<span class="comment">// We pass a JSON string as the request body</span>
+resp, err := s.Execute("{\"location\": {\"lat\": -33.8669710, \"lng\": 151.1958750}, \"accuracy\": 50, \"name\": \"Google Shoes!\", \"types\": [\"shoe_store\"], \"language\": \"en-AU\"}")
+
+if err != nil {
+    fmt.Println(err.Error())
+    return
+}
+<span class="comment"></span></pre>
+			
+			<p>Output:</p>
+			<pre class="output">REQUEST_DENIED, since the Api Key is not valid
+</pre>
+			
+		
+	</div>
+</div>
+
+			
+				
+				<h3 id="Service.RemoveParam">func (*Service) <a href="http://localhost:81/src/pkg/net/googlemaps/googlemaps.go?s=5907:5948#L176">RemoveParam</a></h3>
+				<pre>func (s *<a href="http://localhost:81/pkg/net/googlemaps/#Service">Service</a>) RemoveParam(key <a href="http://localhost:81/pkg/builtin/#string">string</a>)</pre>
+				<p>
+Removes a parameter
+</p>
+
+				
+				
+			
+				
+				<h3 id="Service.SetApiKey">func (*Service) <a href="http://localhost:81/src/pkg/net/googlemaps/googlemaps.go?s=3791:3831#L111">SetApiKey</a></h3>
+				<pre>func (s *<a href="http://localhost:81/pkg/net/googlemaps/#Service">Service</a>) SetApiKey(aKey <a href="http://localhost:81/pkg/builtin/#string">string</a>)</pre>
+				<p>
+If you have used the "key" authentication type, you need to set the API Key with this function before calling Execute.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Service.SetAuthType">func (*Service) <a href="http://localhost:81/src/pkg/net/googlemaps/googlemaps.go?s=5248:5297#L154">SetAuthType</a></h3>
+				<pre>func (s *<a href="http://localhost:81/pkg/net/googlemaps/#Service">Service</a>) SetAuthType(aType <a href="http://localhost:81/pkg/builtin/#string">string</a>) <a href="http://localhost:81/pkg/builtin/#error">error</a></pre>
+				<p>
+SetAuthType sets the authentication type of the service. Can (and should) be one of these:
+</p>
+<pre>googlemaps.GOOGLEMAPS_AUTH_CLIENT
+googlemaps.GOOGLEMAPS_AUTH_KEY
+googlemaps.GOOGLEMAPS_AUTH_EMPTY
+</pre>
+
+				
+				
+			
+				
+				<h3 id="Service.SetClientId">func (*Service) <a href="http://localhost:81/src/pkg/net/googlemaps/googlemaps.go?s=3984:4025#L118">SetClientId</a></h3>
+				<pre>func (s *<a href="http://localhost:81/pkg/net/googlemaps/#Service">Service</a>) SetClientId(cId <a href="http://localhost:81/pkg/builtin/#string">string</a>)</pre>
+				<p>
+If you have used the "client" authentication type, you need to set the Client ID with this function before calling Execute.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Service.SetClientSecret">func (*Service) <a href="http://localhost:81/src/pkg/net/googlemaps/googlemaps.go?s=4525:4574#L129">SetClientSecret</a></h3>
+				<pre>func (s *<a href="http://localhost:81/pkg/net/googlemaps/#Service">Service</a>) SetClientSecret(cSecret <a href="http://localhost:81/pkg/builtin/#string">string</a>)</pre>
+				<p>
+If you have used the "client" authentication type, you need to set the Client Secret with this function before calling Execute.
+</p>
+<p>
+Note that the client secret is a base-64 encoded string for URL's. Basically, the one you get in the e-mail after you register a business account with Google Maps. An example key is "vNIXE0xscrmjlyV-12Nj_BvUPaw="
+</p>
+<p>
+More information here - <a href="https://developers.google.com/maps/documentation/business/webservices/auth#generating_valid_signatures">https://developers.google.com/maps/documentation/business/webservices/auth#generating_valid_signatures</a>
+</p>
+
+				
+				
+			
+				
+				<h3 id="Service.SetRequestMethod">func (*Service) <a href="http://localhost:81/src/pkg/net/googlemaps/googlemaps.go?s=4771:4827#L138">SetRequestMethod</a></h3>
+				<pre>func (s *<a href="http://localhost:81/pkg/net/googlemaps/#Service">Service</a>) SetRequestMethod(rMethod <a href="http://localhost:81/pkg/builtin/#string">string</a>) <a href="http://localhost:81/pkg/builtin/#error">error</a></pre>
+				<p>
+SetRequestMethod sets the request method of the service.
+</p>
+<p>
+In most cases, you will be using GET, but in the case of the Places API, you might need to use POST.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Service.SetServicePath">func (*Service) <a href="http://localhost:81/src/pkg/net/googlemaps/googlemaps.go?s=3591:3637#L104">SetServicePath</a></h3>
+				<pre>func (s *<a href="http://localhost:81/pkg/net/googlemaps/#Service">Service</a>) SetServicePath(sPath <a href="http://localhost:81/pkg/builtin/#string">string</a>)</pre>
+				<p>
+SetServicePath sets the path of the service.
+</p>
+<p>
+Example paths are: "place/event/add" or "directions"
+</p>
+
+				
+				
+			
+				
+				<h3 id="Service.String">func (*Service) <a href="http://localhost:81/src/pkg/net/googlemaps/googlemaps.go?s=3304:3337#L89">String</a></h3>
+				<pre>func (s *<a href="http://localhost:81/pkg/net/googlemaps/#Service">Service</a>) String() <a href="http://localhost:81/pkg/builtin/#string">string</a></pre>
+				<p>
+String outputs the service method and URL as a string.
+</p>
+
+				
+				
+			
+		
+			
+			
+			<h2 id="Stringer">type <a href="http://localhost:81/src/pkg/net/googlemaps/googlemaps.go?s=2271:2315#L45">Stringer</a></h2>
+			<pre>type Stringer interface {
+    String() <a href="http://localhost:81/pkg/builtin/#string">string</a>
+}</pre>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<script>
+$(document).ready(function() {
+	'use strict';
+	// Set up playground when each element is toggled.
+	$('div.play').each(function (i, el) {
+		var built = false;
+		$(el).closest('.toggle').click(function() {
+			// Only set up playground once.
+			if (built) {
+				return;
+			}
+			built = true;
+
+			// Set up playground.
+			var code = $('.code', el);
+			playground({
+				'codeEl':   code,
+				'outputEl': $('.output', el),
+				'runEl':    $('.run', el),
+				'fmtEl':    $('.fmt', el),
+				'shareEl':  $('.share', el),
+				'shareRedirect': 'http://play.golang.org/p/'
+			});
+
+			// Make the code textarea resize to fit content.
+			var resize = function() {
+				code.height(0);
+				var h = code[0].scrollHeight;
+				code.height(h+20); // minimize bouncing.
+				code.closest('.input').height(h);
+			};
+			code.on('keydown', resize);
+			code.on('keyup', resize);
+			code.keyup(); // resize now.
+		});
+	});
+});
+</script>
+
+
+
+<div id="footer">
+Build version go1.1.2.<br>
+Except as <a href="http://code.google.com/policies.html#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="http://localhost:81/LICENSE">BSD license</a>.<br>
+<a href="http://localhost:81/doc/tos.html">Terms of Service</a> | 
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+
+<iframe name="oauth2relay359173107" id="oauth2relay359173107" src="./Documentation_files/postmessageRelay.htm" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>
