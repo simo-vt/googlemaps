@@ -1,62 +1,37 @@
 googlemaps
 ==========
 
-Introduction
+Installation
 ------------
-Google Maps WebServices HTTP Client API for the Go Programming Language.
 
-The idea is simple. You create a service, you assign parameters to it and you execute it with the Execute function.
+Simply tell Go to do the following thing:
 
-This client API supports the two types of business authentication, described here - https://developers.google.com/maps/documentation/business/webservices/auth
+	go get github.com/simo-vt/googlemaps
 
-For "key" authentication you must set the API Key for the service with the function
-* func (s *Service) SetApiKey(aKey string)
-
-For "client" authentication you must set a Client ID and Client Secret with the functions
-* func (s *Service) SetClientId(cId string)
-* func (s *Service) SetClientSecret(cSecret string)
-
-Official API documentation - https://developers.google.com/maps/documentation/webservices/. Please note that you should familiarize yourself with the terms of Google Maps API before using it.
-
-Constants
----------
-* googlemaps.GOOGLEMAPS_AUTH_CLIENT - used if we want to use "client" type of authentication. For business users. Note the limits explained in the Google Maps API.
-* googlemaps.GOOGLEMAPS_AUTH_KEY - used if we want to use "key" type of authentication. For business users. Note the limits explained in the Google Maps API.
-* googlemaps.GOOGLEMAPS_AUTH_EMPTY - used if we do not want to authenticate. Note the limits explained in the Google Maps API.
-
-Functions
----------
-
-### func NewService(sPath string, rMethod string, aType string) (*Service, error)
-NewService creates a new Google Maps API service. The passed parameters are:
-
-* sPath string - this is the name of the service you wish to call. For example: "place/event/add" or "directions".
-* rMethod string - this is the request method. You will most often use GET, but with the case of the Places API you may need to use POST.
-* aType string - can be one of the following: googlemaps.GOOGLEMAPS_AUTH_KEY, googlemaps.GOOGLEMAPS_AUTH_CLIENT, googlemaps.GOOGLEMAPS_AUTH_EMPTY
-
-### func (s *Service) Execute(requestBody string) (map[string]interface{}, error)
-Execute is the main function of this client API. You should pass the request body as a string.
-
-In most cases, this should be an empty string, since the requests to the API are mostly GET. In the case of the Places API the requestBody string should contain a JSON object with the parameters, like in this link: https://developers.google.com/places/documentation/actions#event_add
+How to use
+------------
 
 #### Example:
     package main
     
     import (
     	"fmt"
-    	"net/googlemaps"
+    	"googlemaps"
     )
     
     func main() {
+        // We instantiate a service from the Google API and select the authentication method. It uses one of the available constants, explained below.
     	s, err := googlemaps.NewService("elevation", "GET", googlemaps.GOOGLEMAPS_AUTH_EMPTY)
     	if err != nil {
     		fmt.Println(err.Error())
     		return
     	}
-    
+        
+        // We add parameters to the service.
     	s.AddParam("sensor", "false")
     	s.AddParam("locations", "40.714728,-73.998672")
     
+        // And we execute with a request body. There are cases when we will need to pass JSON code.
     	resp, err := s.Execute("")
     
     	if err != nil {
@@ -67,41 +42,61 @@ In most cases, this should be an empty string, since the requests to the API are
     	fmt.Println(resp["status"])
     	//Output: OK
     }
+    
+### Managing parameters
 
-### func (s *Service) AddParam(key, value string)
-AddParam adds a request parameter to the service request. Note that you should always use this function to set the "sensor" parameter to either "true" or "false"
+AddParam(key, value string) adds a request parameter to the service request. Note that you should always use this function to set the "sensor" parameter to either "true" or "false"
 
-### func (s *Service) RemoveParam(key string)
-Removes a parameter.
+RemoveParam(key string) removes a parameter.
 
-### func (s *Service) SetApiKey(aKey string)
-If you have used the "key" authentication type, you need to set the API Key with this function before calling Execute.
+### Authenticating
 
-### func (s *Service) SetAuthType(aType string) error
-SetAuthType sets the authentication type of the service. Can (and should) be one of these:
+Almost all of the Google services offer a corporate upgrade for which you will need to authenticate. There are two ways to do this.
+
+#### Setting the authentication type
+
+SetAuthType(aType string) sets the authentication type of the service. Can (and should) be one of these:
 * googlemaps.GOOGLEMAPS_AUTH_CLIENT
 * googlemaps.GOOGLEMAPS_AUTH_KEY
 * googlemaps.GOOGLEMAPS_AUTH_EMPTY
 
-### func (s *Service) SetClientId(cId string)
-If you have used the "client" authentication type, you need to set the Client ID with this function before calling Execute.
+#### API Key
+You should use SetApiKey(aKey string) if you have used the "key" authentication type, you need to set the API Key with this function before calling Execute.
 
-### func (s *Service) SetClientSecret(cSecret string)
-If you have used the "client" authentication type, you need to set the Client Secret with this function before calling Execute.
+#### Client
+Use SetClientId(cId string) and SetClientSecret(cSecret string) if you have used the "client" authentication type. You need to set the Client ID and Client Secret with this function before calling Execute.
 
 Note that the client secret is a base-64 encoded string for URL's. Basically, the one you get in the e-mail after you register a business account with Google Maps. An example key is "vNIXE0xscrmjlyV-12Nj_BvUPaw="
 
 More information here - https://developers.google.com/maps/documentation/business/webservices/auth#generating_valid_signatures
 
-### func (s *Service) SetRequestMethod(rMethod string) error
-SetRequestMethod sets the request method of the service.
+License
+----------
+Copyright (c) 2014 Simeon Totev. All rights reserved.
 
-In most cases, you will be using GET, but in the case of the Places API, you might need to use POST.
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
 
-### func (s *Service) SetServicePath(sPath string)
-SetServicePath sets the path of the service.
+   * Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+   * Neither the name of Simeon Totev nor the names of his
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.
 
-Example paths are: "place/event/add" or "directions"
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-### func (s *Service) String() string
-String outputs the service method and URL as a string.
